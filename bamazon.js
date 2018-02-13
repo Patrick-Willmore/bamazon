@@ -20,6 +20,7 @@ var sqlConnection = mysql.createConnection({
     if (err) throw err;
     // run the start function after the connection is made to prompt the user
     printItemList();
+    
     console.log("connected as id " + sqlConnection.threadId);
   });
 
@@ -41,9 +42,9 @@ var sqlConnection = mysql.createConnection({
             res.forEach(element => {
                 data.push(
                     [
-                        element.item_id,
+                        element.id,
                         element.product_name,
-                        element.depart_name,
+                        element.dept_name,
                         element.price,
                         element.quantity
                     ]
@@ -53,8 +54,9 @@ var sqlConnection = mysql.createConnection({
             resolve();
         });
     })
-    start();
+
 }
+// start();
   function start() {
     inquirer
       .prompt({
@@ -67,8 +69,9 @@ var sqlConnection = mysql.createConnection({
         console.log(answer);
 
       });
+      
   }
-
+  start();
 //require
 //inquirer.prompt .then(answers)
     //   * The first should ask them the ID of the product they would like to buy.
